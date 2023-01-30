@@ -10,10 +10,33 @@
   </head>
   <body>
     <div id="app">
-      <h1>Product goes here</h1>
-    </div>
+      <div class="nav-bar"></div>
 
-    <!-- Import Js -->
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <!-- image goes here -->
+            <img :src="image" />
+          </div>
+          <div class="product-info">
+            <h1>{{ product }}</h1>
+            <p v-if="inStock">In Stock</p>
+            <p v-else>Out of Stock</p>
+            <ul>
+              <li v-for="detail in details">{{detail}}</li>
+            </ul>
+            <div v-for="variant in variants" :key="variant.id">
+              {{variant.color}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Import App -->
     <script src="./main.js"></script>
+    <!-- Mount App -->
+    <script>
+      const mountedApp = app.mount('#app');
+    </script>
   </body>
 </html>
